@@ -7,6 +7,8 @@ import { faqs, teacherBrand } from "@/lib/public-content";
 import { getPublicClasses, getPublicTeacherProfile } from "@/lib/public-site";
 import { formatScheduleDay, formatTimeRange } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function ContactPage() {
   const [teacher, classes] = await Promise.all([getPublicTeacherProfile(), getPublicClasses()]);
   const emailHref = teacher?.email ? `mailto:${teacher.email}` : "/login";

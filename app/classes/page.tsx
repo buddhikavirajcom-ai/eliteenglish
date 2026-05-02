@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { teacherBrand } from "@/lib/public-content";
 import { getPublicClasses, getPublicTeacherProfile } from "@/lib/public-site";
 
+export const dynamic = "force-dynamic";
+
 export default async function PublicClassesPage() {
   const [classes, teacher] = await Promise.all([getPublicClasses(), getPublicTeacherProfile()]);
 

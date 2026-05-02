@@ -7,6 +7,8 @@ import { Card } from "@/components/ui/card";
 import { getPublicClassById } from "@/lib/public-site";
 import { formatCurrency, formatDate, formatScheduleDay, formatTimeRange } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function PublicClassEnrollmentPage({ params }: { params: { id: string } }) {
   const lesson = await getPublicClassById(params.id);
 

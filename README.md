@@ -22,6 +22,7 @@ Production-ready Learning Management System built with:
 ## Quick Start
 
 1. Copy `.env.example` to `.env` and update `DATABASE_URL`, `NEXTAUTH_URL`, and `NEXTAUTH_SECRET`.
+   If your MySQL username or password contains reserved URL characters like `@`, `#`, `:`, or `+`, URL-encode them inside `DATABASE_URL`.
 2. Install dependencies:
 
 ```bash

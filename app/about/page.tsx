@@ -6,6 +6,8 @@ import { Card } from "@/components/ui/card";
 import { teacherBrand } from "@/lib/public-content";
 import { getPublicTeacherProfile } from "@/lib/public-site";
 
+export const dynamic = "force-dynamic";
+
 export default async function AboutPage() {
   const teacher = await getPublicTeacherProfile();
 
