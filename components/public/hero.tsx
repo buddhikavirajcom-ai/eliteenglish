@@ -5,7 +5,6 @@ import {
   PlayCircle,
   Search,
   Sparkles,
-  Star,
   Users
 } from "lucide-react";
 import { heroHighlights, heroMetrics } from "@/lib/landing-content";
@@ -131,20 +130,6 @@ export function Hero() {
                     <p className="mt-1 text-lg font-semibold">1.8k+ active students</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="animate-rise-in absolute -right-2 top-10 rounded-[1.5rem] border border-white/20 bg-slate-950/78 p-4 text-white shadow-[0_20px_40px_rgba(8,15,52,0.24)] backdrop-blur sm:-right-8">
-                <div className="flex items-center gap-2 text-amber-300">
-                  <Star className="h-4 w-4 fill-current" />
-                  <Star className="h-4 w-4 fill-current" />
-                  <Star className="h-4 w-4 fill-current" />
-                  <Star className="h-4 w-4 fill-current" />
-                  <Star className="h-4 w-4 fill-current" />
-                </div>
-                <p className="mt-2 text-lg font-semibold">4.9 family rating</p>
-                <p className="mt-1 text-sm text-white/72">
-                  Trusted for structure, support, and polished delivery
-                </p>
               </div>
             </div>
 

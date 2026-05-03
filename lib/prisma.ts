@@ -1,3 +1,4 @@
+import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import { PrismaClient } from "@prisma/client";
 
 declare global {
@@ -29,7 +30,11 @@ function getNormalizedDatabaseUrl() {
 export const prisma =
   global.prisma ??
   new PrismaClient({
-    datasourceUrl: getNormalizedDatabaseUrl(),
+    adapter: new PrismaMariaDb(
+      getNormalizedDatabaseUrl() ?? (() => {
+        throw new Error("DATABASE_URL is not set.");
+      })()
+    ),
     log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"]
   });
 
