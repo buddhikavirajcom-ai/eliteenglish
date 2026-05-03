@@ -8,6 +8,7 @@ import {
   PaymentMethod,
   PaymentStatus,
   PaymentType,
+  Prisma,
   PrismaClient,
   ScheduleDay,
   UserRole
@@ -239,6 +240,11 @@ async function main() {
 
 main()
   .catch((error) => {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2022") {
+      console.error("Database schema is out of sync with prisma/schema.prisma.");
+      console.error("Run `npx prisma db push` on this environment, then run `npx prisma db seed` again.");
+    }
+
     console.error(error);
     process.exit(1);
   })
