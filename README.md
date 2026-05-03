@@ -62,6 +62,7 @@ npm run dev
 
 - `npm run dev`
 - `npm run build`
+- `npm run db:deploy`
 - `npm run start`
 - `npm run prisma:generate`
 - `npm run db:push`
@@ -72,3 +73,5 @@ npm run dev
 - Authentication uses NextAuth credentials with Prisma-backed users.
 - Student portal logins use the student's phone number by default.
 - Route handlers live under `app/api/*`.
+- `npm run build` now generates the Prisma client and builds Next.js without running database migrations.
+- Run `npm run db:deploy` separately in environments where you want Prisma migrations applied.
