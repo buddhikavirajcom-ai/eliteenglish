@@ -1,3 +1,4 @@
+import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import { addDays, getDay, subDays } from "date-fns";
 import bcrypt from "bcryptjs";
 import {
@@ -12,7 +13,34 @@ import {
   UserRole
 } from "@prisma/client";
 
-const prisma = new PrismaClient();
+function getNormalizedDatabaseUrl() {
+  const rawUrl = process.env.DATABASE_URL;
+
+  if (!rawUrl) {
+    return undefined;
+  }
+
+  const trimmed = rawUrl.trim();
+  const normalized =
+    (trimmed.startsWith("\"") && trimmed.endsWith("\"")) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+      ? trimmed.slice(1, -1).trim()
+      : trimmed;
+
+  if (!normalized) {
+    return undefined;
+  }
+
+  return normalized;
+}
+
+const prisma = new PrismaClient({
+  adapter: new PrismaMariaDb(
+    getNormalizedDatabaseUrl() ?? (() => {
+      throw new Error("DATABASE_URL is not set.");
+    })()
+  )
+});
 
 function createQrCode(name: string) {
   return `LMS-${name.replace(/\s+/g, "-").toUpperCase()}-${crypto.randomUUID().slice(0, 8)}`;
